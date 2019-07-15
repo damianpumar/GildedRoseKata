@@ -21,15 +21,11 @@ class GildedRose {
 
                     if (this.isBackStage(items[i])) {
                         if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                            increaseQuality(items[i]);
                         }
 
                         if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                            increaseQuality(items[i]);
                         }
                     }
                 }
@@ -51,11 +47,15 @@ class GildedRose {
                         items[i].quality = items[i].quality - items[i].quality;
                     }
                 } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
+                    increaseQuality(items[i]);
                 }
             }
+        }
+    }
+
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality++;
         }
     }
 
