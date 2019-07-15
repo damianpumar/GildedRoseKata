@@ -31,7 +31,7 @@ class GildedRose {
                 reduceQuality(item);
             }
 
-            item.sellIn = item.sellIn - 1;
+            reduceSellIn(item);
 
             if (item.sellIn < 0) {
                 if (!isAgedBrie(item)) {
@@ -46,6 +46,10 @@ class GildedRose {
             }
         }
 
+    }
+
+    private void reduceSellIn(Item item) {
+        item.sellIn--;
     }
 
     private void reduceQuality(Item item) {
