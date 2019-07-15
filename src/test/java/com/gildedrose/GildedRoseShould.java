@@ -105,7 +105,24 @@ public class GildedRoseShould {
         assertEquals(0, gildedRose.items[0].quality);
     }
 
+    @Test
+    public void calculate_and_iterate_for_each_item() {
+        Item sulfura = itemBuilder("Sulfuras, Hand of Ragnaros", 0, 80);
+        Item backStage = itemBuilder("Backstage passes to a TAFKAL80ETC concert", 0, 8);
+
+        GildedRose gildedRose = new GildedRose(new Item[]{sulfura, backStage});
+        gildedRose.updateQuality();
+
+        assertTrue(gildedRose.items[0].quality == 80);
+
+        assertTrue(gildedRose.items[1].quality == 0);
+    }
+
     private Item[] itemsBuilder(String name, int sellIn, int quality) {
-        return new Item[]{new Item(name, sellIn, quality)};
+        return new Item[]{itemBuilder(name, sellIn, quality)};
+    }
+
+    private Item itemBuilder(String name, int sellIn, int quality) {
+        return new Item(name, sellIn, quality);
     }
 }
