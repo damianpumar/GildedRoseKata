@@ -118,6 +118,13 @@ public class GildedRoseShould {
         assertTrue(gildedRose.items[1].quality == 0);
     }
 
+    @Test
+    public void degrade_quality_twice_as_fast_as_regular_item() {
+        GildedRose gildedRose = new GildedRose(itemsBuilder("Conjured", 2, 8));
+
+        assertEquals(6, gildedRose.items[0].quality);
+    }
+
     private Item[] itemsBuilder(String name, int sellIn, int quality) {
         return new Item[]{itemBuilder(name, sellIn, quality)};
     }
