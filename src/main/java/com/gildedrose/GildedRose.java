@@ -1,9 +1,6 @@
 package com.gildedrose;
 
 class GildedRose {
-    public static final int MIN_QUALITY = 0;
-    public static final int MIN_SELLIN = 0;
-    private final int MAX_QUALITY = 50;
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -12,69 +9,19 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : this.items) {
-            if (isSulfuras(item)) {
-                continue;
-            } else if (isBackStage(item)) {
-                increaseBackStageQuality(item);
+            if (isSulfuras(item)) continue;
+
+            ItemCategory itemCategory;
+
+            if (isBackStage(item)) {
+                itemCategory = new BackStageCategory();
             } else if (isAgedBrie(item)) {
-                increaseAgedBrieQuality(item);
+                itemCategory = new AgedBrieCategory();
             } else {
-                increaseRegularQuality(item);
+                itemCategory = new RegularCategory();
             }
-        }
-    }
 
-    private void increaseAgedBrieQuality(Item item) {
-        increaseQuality(item);
-
-        reduceSellIn(item);
-
-        if (item.sellIn < MIN_SELLIN) {
-            increaseQuality(item);
-        }
-    }
-
-    private void increaseBackStageQuality(Item item) {
-        if (item.sellIn < 11) {
-            increaseQuality(item);
-        }
-
-        if (item.sellIn < 6) {
-            increaseQuality(item);
-        }
-
-        increaseQuality(item);
-
-        reduceSellIn(item);
-
-        if (item.sellIn < MIN_SELLIN) {
-            item.quality = MIN_QUALITY;
-        }
-    }
-
-    private void increaseRegularQuality(Item item) {
-        reduceQuality(item);
-
-        reduceSellIn(item);
-
-        if (item.sellIn < MIN_SELLIN) {
-            reduceQuality(item);
-        }
-    }
-
-    private void reduceSellIn(Item item) {
-        item.sellIn--;
-    }
-
-    private void reduceQuality(Item item) {
-        if (item.quality > MIN_QUALITY) {
-            item.quality--;
-        }
-    }
-
-    private void increaseQuality(Item item) {
-        if (item.quality < MAX_QUALITY) {
-            item.quality++;
+            itemCategory.calculateQuantity(item);
         }
     }
 
