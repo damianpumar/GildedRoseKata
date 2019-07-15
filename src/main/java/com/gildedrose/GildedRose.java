@@ -34,14 +34,14 @@ class GildedRose {
             reduceSellIn(item);
 
             if (item.sellIn < 0) {
-                if (!isAgedBrie(item)) {
-                    if (!isBackStage(item)) {
-                        reduceQuality(item);
-                    } else {
-                        item.quality = MIN_QUALITY;
-                    }
-                } else {
+                if (isAgedBrie(item)) {
                     increaseQuality(item);
+                }
+
+                if (isBackStage(item)) {
+                    item.quality = MIN_QUALITY;
+                } else {
+                    reduceQuality(item);
                 }
             }
         }
