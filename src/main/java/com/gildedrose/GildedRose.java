@@ -21,7 +21,7 @@ class GildedRose {
                 itemCategory = new RegularCategory();
             }
 
-            itemCategory.calculateQuantity(item);
+            itemCategory.calculateQuality(item);
         }
     }
 

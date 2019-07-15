@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public class AgedBrieCategory extends ItemCategory {
     @Override
-    public void calculateQuantity(Item item) {
+    public void calculateQuality(Item item) {
         increaseQuality(item);
 
         reduceSellIn(item);

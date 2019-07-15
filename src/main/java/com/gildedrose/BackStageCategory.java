@@ -1,13 +1,16 @@
 package com.gildedrose;
 
 public class BackStageCategory extends ItemCategory {
+    private final int SIX = 6;
+    private final int ELEVEN = 11;
+
     @Override
-    public void calculateQuantity(Item item) {
-        if (item.sellIn < 11) {
+    public void calculateQuality(Item item) {
+        if (item.sellIn < ELEVEN) {
             increaseQuality(item);
         }
 
-        if (item.sellIn < 6) {
+        if (item.sellIn < SIX) {
             increaseQuality(item);
         }
 
