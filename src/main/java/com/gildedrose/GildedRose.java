@@ -11,19 +11,19 @@ class GildedRose {
         for (Item item : this.items) {
             if (isSulfuras(item)) continue;
 
-            ItemCategory itemCategory;
+            RegularCategory regularCategory;
 
             if (isBackStage(item)) {
-                itemCategory = new BackStageCategory();
+                regularCategory = new BackStageCategory();
             } else if (isAgedBrie(item)) {
-                itemCategory = new AgedBrieCategory();
+                regularCategory = new AgedBrieCategory();
             } else if (isConjured(item)) {
-                itemCategory = new ConjuredCategory();
+                regularCategory = new ConjuredCategory();
             } else {
-                itemCategory = new RegularCategory();
+                regularCategory = new RegularCategory();
             }
 
-            itemCategory.calculateQuality(item);
+            regularCategory.calculateQuality(item);
         }
     }
 

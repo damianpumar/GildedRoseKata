@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackStageCategory extends ItemCategory {
+public class BackStageCategory extends RegularCategory {
     private final int SIX = 6;
     private final int ELEVEN = 11;
 
