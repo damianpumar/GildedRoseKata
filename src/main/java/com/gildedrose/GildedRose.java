@@ -17,12 +17,18 @@ class GildedRose {
                 itemCategory = new BackStageCategory();
             } else if (isAgedBrie(item)) {
                 itemCategory = new AgedBrieCategory();
+            } else if (isConjured(item)) {
+                itemCategory = new ConjuredCategory();
             } else {
                 itemCategory = new RegularCategory();
             }
 
             itemCategory.calculateQuality(item);
         }
+    }
+
+    private boolean isConjured(Item item) {
+        return item.name.equals("Conjured");
     }
 
     private boolean isAgedBrie(Item item) {

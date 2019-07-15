@@ -12,7 +12,7 @@ public class RegularCategory extends ItemCategory {
         }
     }
 
-    private void reduceQuality(Item item) {
+    protected void reduceQuality(Item item) {
         if (item.quality > MIN_QUALITY) {
             item.quality--;
         }

@@ -121,6 +121,7 @@ public class GildedRoseShould {
     @Test
     public void degrade_quality_twice_as_fast_as_regular_item() {
         GildedRose gildedRose = new GildedRose(itemsBuilder("Conjured", 2, 8));
+        gildedRose.updateQuality();
 
         assertEquals(6, gildedRose.items[0].quality);
     }
